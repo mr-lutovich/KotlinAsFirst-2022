@@ -242,7 +242,6 @@ fun isPalindrome(n: Int): Boolean {
     return n2 == n
 }
 
-fun main() = println(isPalindrome(15751))
 
 /**
  * Средняя (3 балла)
@@ -252,7 +251,19 @@ fun main() = println(isPalindrome(15751))
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun hasDifferentDigits(n: Int): Boolean = TODO()
+fun hasDifferentDigits(n: Int): Boolean {
+    var n1 = n
+    while (n1 != 0) {
+        val d1 = n1 % 10
+        n1 /= 10
+        val d2 = n1 % 10
+        if (d1 != d2 && d2 != 0) return true
+    }
+
+    return false
+}
+
+fun main() = println(hasDifferentDigits(323))
 
 /**
  * Средняя (4 балла)
