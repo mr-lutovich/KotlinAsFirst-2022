@@ -2,6 +2,8 @@
 
 package lesson3.task1
 
+import kotlin.math.PI
+import kotlin.math.abs
 import kotlin.math.sqrt
 
 // Урок 3: циклы
@@ -14,13 +16,14 @@ import kotlin.math.sqrt
  *
  * Вычисление факториала
  */
-fun factorial(n: Int): Double {
+fun factorial(n: Long): Double {
     var result = 1.0
     for (i in 1..n) {
         result *= i // Please do not fix in master
     }
     return result
 }
+
 
 /**
  * Пример
@@ -263,7 +266,6 @@ fun hasDifferentDigits(n: Int): Boolean {
     return false
 }
 
-fun main() = println(hasDifferentDigits(323))
 
 /**
  * Средняя (4 балла)
@@ -274,7 +276,23 @@ fun main() = println(hasDifferentDigits(323))
  * Подумайте, как добиться более быстрой сходимости ряда при больших значениях x.
  * Использовать kotlin.math.sin и другие стандартные реализации функции синуса в этой задаче запрещается.
  */
-fun sin(x: Double, eps: Double): Double = TODO()
+fun sin(x: Double, eps: Double): Double {
+    var y = 0.0
+    var sign = 1.0
+    var sqrX = x
+    var n: Long = 1
+    do {
+        val y1 = sign * sqrX / factorial(n)
+        y += y1
+        sign *= -1
+        sqrX *= x * x
+        n += 2
+    }
+    while (abs(eps) < abs(y1))
+    return y
+}
+
+fun main() = println(sin(100 * PI, 1e-5))
 
 /**
  * Средняя (4 балла)
@@ -285,7 +303,21 @@ fun sin(x: Double, eps: Double): Double = TODO()
  * Подумайте, как добиться более быстрой сходимости ряда при больших значениях x.
  * Использовать kotlin.math.cos и другие стандартные реализации функции косинуса в этой задаче запрещается.
  */
-fun cos(x: Double, eps: Double): Double = TODO()
+fun cos(x: Double, eps: Double): Double {
+    var y = 1.0
+    var sign = 1.0
+    var sqrX = x * x
+    var n: Long = 2
+    do {
+        val y1 = -sign * sqrX / factorial(n)
+        y += y1
+        sign *= -1
+        sqrX *= x * x
+        n += 2
+    }
+    while (abs(eps) < abs(y1))
+    return y
+}
 
 /**
  * Сложная (4 балла)
