@@ -16,7 +16,7 @@ import kotlin.math.sqrt
  *
  * Вычисление факториала
  */
-fun factorial(n: Long): Double {
+fun factorial(n: Int): Double {
     var result = 1.0
     for (i in 1..n) {
         result *= i // Please do not fix in master
@@ -279,20 +279,20 @@ fun hasDifferentDigits(n: Int): Boolean {
 fun sin(x: Double, eps: Double): Double {
     var y = 0.0
     var sign = 1.0
-    var sqrX = x
-    var n: Long = 1
+    var n = 1
+    val minX: Double = ((((x) * 180 / PI) % 360) * PI) / 180
+    var sqrX = minX
     do {
         val y1 = sign * sqrX / factorial(n)
         y += y1
         sign *= -1
-        sqrX *= x * x
+        sqrX *= minX * minX
         n += 2
-    }
-    while (abs(eps) < abs(y1))
+    } while (abs(eps) < abs(y1))
     return y
 }
 
-fun main() = println(sin(100 * PI, 1e-5))
+fun main() = println(sin(4.5 * PI, 1e-5))
 
 /**
  * Средняя (4 балла)
@@ -306,16 +306,16 @@ fun main() = println(sin(100 * PI, 1e-5))
 fun cos(x: Double, eps: Double): Double {
     var y = 1.0
     var sign = 1.0
-    var sqrX = x * x
-    var n: Long = 2
+    var n = 2
+    val minX: Double = ((((x) * 180 / PI) % 360) * PI) / 180
+    var sqrX = minX * minX
     do {
         val y1 = -sign * sqrX / factorial(n)
         y += y1
         sign *= -1
-        sqrX *= x * x
+        sqrX *= minX * minX
         n += 2
-    }
-    while (abs(eps) < abs(y1))
+    } while (abs(eps) < abs(y1))
     return y
 }
 
