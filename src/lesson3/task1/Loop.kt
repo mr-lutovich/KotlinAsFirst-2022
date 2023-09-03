@@ -292,7 +292,6 @@ fun sin(x: Double, eps: Double): Double {
     return y
 }
 
-fun main() = println(sin(4.5 * PI, 1e-5))
 
 /**
  * Средняя (4 балла) РЕШЕНО
@@ -328,7 +327,20 @@ fun cos(x: Double, eps: Double): Double {
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun squareSequenceDigit(n: Int): Int = TODO()
+fun squareSequenceDigit(n: Int): Int {
+    var sqrX: Int
+    var count = 0
+    for (i in 1..n) {
+        sqrX = i * i
+        sqrX /= 10
+        count++
+
+    }
+
+    return count
+}
+
+fun main() = println(squareSequenceDigit(9))
 
 /**
  * Сложная (5 баллов)
