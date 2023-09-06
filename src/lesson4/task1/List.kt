@@ -114,13 +114,22 @@ fun isPalindrome(str: String): Boolean {
 fun buildSumExample(list: List<Int>) = list.joinToString(separator = " + ", postfix = " = ${list.sum()}")
 
 /**
- * Простая (2 балла)
+ * Простая (2 балла) РЕШЕНО
  *
  * Найти модуль заданного вектора, представленного в виде списка v,
  * по формуле abs = sqrt(a1^2 + a2^2 + ... + aN^2).
  * Модуль пустого вектора считать равным 0.0.
  */
-fun abs(v: List<Double>): Double = TODO()
+fun abs(v: List<Double>): Double {
+    var abs = 0.0
+    for (element in v) {
+       abs += element * element
+
+    }
+    return sqrt(abs)
+}
+
+fun main() = println(abs(listOf(3.0, -4.0)))
 
 /**
  * Простая (2 балла)
