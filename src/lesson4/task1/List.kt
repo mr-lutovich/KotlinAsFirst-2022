@@ -129,14 +129,21 @@ fun abs(v: List<Double>): Double {
     return sqrt(abs)
 }
 
-fun main() = println(abs(listOf(3.0, -4.0)))
+
 
 /**
- * Простая (2 балла)
+ * Простая (2 балла) РЕШЕНО
  *
  * Рассчитать среднее арифметическое элементов списка list. Вернуть 0.0, если список пуст
  */
-fun mean(list: List<Double>): Double = TODO()
+fun mean(list: List<Double>): Double {
+   return when {
+        list.isEmpty() -> 0.0
+        else -> list.sum() / list.size
+    }
+}
+
+fun main() = println(mean(listOf(1.0, 2.0, 3.0)))
 
 /**
  * Средняя (3 балла)
