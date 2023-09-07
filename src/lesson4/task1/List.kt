@@ -175,9 +175,7 @@ fun times(a: List<Int>, b: List<Int>): Int {
 
     if (a.isEmpty() && b.isEmpty()) {
         return 0
-    } else if (a.size < b.size || b.size < a.size) {
-        throw IOException("Вектора разных размеров")
-    }
+    } else if (a.size < b.size || b.size < a.size) throw IOException("Вектора разных размеров")
     var result = 0
     for (i in a.indices) result += (a[i] * b[i])
 
