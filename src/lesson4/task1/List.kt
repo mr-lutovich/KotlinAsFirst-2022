@@ -3,6 +3,7 @@
 package lesson4.task1
 
 import lesson1.task1.discriminant
+import java.io.IOException
 import kotlin.math.sqrt
 
 // Урок 4: списки
@@ -161,16 +162,29 @@ fun center(list: MutableList<Double>): MutableList<Double> {
     return list
 }
 
-fun main() = println(center(mutableListOf(3.14)))
 
 /**
- * Средняя (3 балла)
+ * Средняя (3 балла) РЕШЕНО
  *
  * Найти скалярное произведение двух векторов равной размерности,
  * представленные в виде списков a и b. Скалярное произведение считать по формуле:
  * C = a1b1 + a2b2 + ... + aNbN. Произведение пустых векторов считать равным 0.
  */
-fun times(a: List<Int>, b: List<Int>): Int = TODO()
+@Throws(IOException::class)
+fun times(a: List<Int>, b: List<Int>): Int {
+
+    if (a.isEmpty() && b.isEmpty()) {
+        return 0
+    } else if (a.size < b.size || b.size < a.size) {
+        throw IOException("Вектора разных размеров")
+    }
+    var result = 0
+    for (i in a.indices) result += (a[i] * b[i])
+
+    return result
+}
+
+fun main() = println(times(listOf(1, 3), listOf(2, 3, 0)))
 
 /**
  * Средняя (3 балла)
