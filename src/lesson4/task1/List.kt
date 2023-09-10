@@ -182,17 +182,28 @@ fun times(a: List<Int>, b: List<Int>): Int {
     return result
 }
 
-fun main() = println(times(listOf(1, 3), listOf(2, 3, 0)))
 
 /**
- * Средняя (3 балла)
+ * Средняя (3 балла) РЕШЕНО
  *
  * Рассчитать значение многочлена при заданном x:
  * p(x) = p0 + p1*x + p2*x^2 + p3*x^3 + ... + pN*x^N.
  * Коэффициенты многочлена заданы списком p: (p0, p1, p2, p3, ..., pN).
  * Значение пустого многочлена равно 0 при любом x.
  */
-fun polynom(p: List<Int>, x: Int): Int = TODO()
+fun polynom(p: List<Int>, x: Int): Int {
+    if (p.isEmpty()) return 0
+    var pX = p[0]
+    var sqrX = x
+    for (i in 1 until p.size) {
+        pX += p[i] * sqrX
+        sqrX *= x
+    }
+    return pX
+}
+
+fun main() = println(polynom(listOf(3, 2), 5))
+
 
 /**
  * Средняя (3 балла)
