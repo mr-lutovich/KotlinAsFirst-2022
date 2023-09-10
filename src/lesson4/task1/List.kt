@@ -223,16 +223,33 @@ fun accumulate(list: MutableList<Int>): MutableList<Int> {
     return list
 }
 
-fun main() = println(accumulate(mutableListOf()))
 
 /**
- * Средняя (3 балла)
+ * Средняя (3 балла) РЕШЕНО
  *
  * Разложить заданное натуральное число n > 1 на простые множители.
  * Результат разложения вернуть в виде списка множителей, например 75 -> (3, 5, 5).
  * Множители в списке должны располагаться по возрастанию.
  */
-fun factorize(n: Int): List<Int> = TODO()
+fun factorize(n: Int): List<Int> {
+    val list = mutableListOf<Int>()
+    var n1 = n
+    var d = 1
+    for (element in 2..n1) {
+        if (n1 % element == 0) {
+            list += element
+            n1 /= element
+            d *= element
+        }
+
+    }
+
+    return if (n >= 10) {
+        (list + (n / d)).sorted()
+    } else list
+}
+
+fun main() = println(factorize(2))
 
 /**
  * Сложная (4 балла)
