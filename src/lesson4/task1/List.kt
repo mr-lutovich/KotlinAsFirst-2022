@@ -202,11 +202,9 @@ fun polynom(p: List<Int>, x: Int): Int {
     return pX
 }
 
-fun main() = println(polynom(listOf(3, 2), 5))
-
 
 /**
- * Средняя (3 балла)
+ * Средняя (3 балла) РЕШЕНО
  *
  * В заданном списке list каждый элемент, кроме первого, заменить
  * суммой данного элемента и всех предыдущих.
@@ -215,7 +213,17 @@ fun main() = println(polynom(listOf(3, 2), 5))
  *
  * Обратите внимание, что данная функция должна изменять содержание списка list, а не его копии.
  */
-fun accumulate(list: MutableList<Int>): MutableList<Int> = TODO()
+fun accumulate(list: MutableList<Int>): MutableList<Int> {
+    if (list.isEmpty()) return list
+    for (i in 1 until list.size) {
+        val element = list[i] + list[i - 1]
+        list.add(i, element)
+        list.removeAt(i + 1)
+    }
+    return list
+}
+
+fun main() = println(accumulate(mutableListOf()))
 
 /**
  * Средняя (3 балла)
