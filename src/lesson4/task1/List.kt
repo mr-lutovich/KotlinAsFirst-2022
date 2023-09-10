@@ -234,31 +234,40 @@ fun accumulate(list: MutableList<Int>): MutableList<Int> {
 fun factorize(n: Int): List<Int> {
     val list = mutableListOf<Int>()
     var n1 = n
-    var d = 1
     for (element in 2..n1) {
-        if (n1 % element == 0) {
+        while (n1 % element == 0) {
             list += element
             n1 /= element
-            d *= element
         }
 
     }
 
-    return if (n >= 10) {
-        (list + (n / d)).sorted()
-    } else list
+    return list
 }
 
-fun main() = println(factorize(2))
 
 /**
- * Сложная (4 балла)
+ * Сложная (4 балла) РЕШЕНО
  *
  * Разложить заданное натуральное число n > 1 на простые множители.
  * Результат разложения вернуть в виде строки, например 75 -> 3*5*5
  * Множители в результирующей строке должны располагаться по возрастанию.
  */
-fun factorizeToString(n: Int): String = TODO()
+fun factorizeToString(n: Int): String {
+    val list = mutableListOf<Int>()
+    var n1 = n
+    for (element in 2..n1) {
+        while (n1 % element == 0) {
+            list += element
+            n1 /= element
+        }
+
+    }
+
+    return list.joinToString(separator = "*")
+}
+
+fun main() = println(factorizeToString(2))
 
 /**
  * Средняя (3 балла)
