@@ -267,16 +267,27 @@ fun factorizeToString(n: Int): String {
     return list.joinToString(separator = "*")
 }
 
-fun main() = println(factorizeToString(2))
+
 
 /**
- * Средняя (3 балла)
+ * Средняя (3 балла) РЕШЕНО
  *
  * Перевести заданное целое число n >= 0 в систему счисления с основанием base > 1.
  * Результат перевода вернуть в виде списка цифр в base-ичной системе от старшей к младшей,
  * например: n = 100, base = 4 -> (1, 2, 1, 0) или n = 250, base = 14 -> (1, 3, 12)
  */
-fun convert(n: Int, base: Int): List<Int> = TODO()
+fun convert(n: Int, base: Int): List<Int> {
+    var n1 = n
+    val list = mutableListOf<Int>()
+    while (n1 > 0) {
+        list += n1 % base
+        n1 /= base
+
+    }
+    return list.reversed()
+}
+
+
 
 /**
  * Сложная (4 балла)
@@ -289,8 +300,19 @@ fun convert(n: Int, base: Int): List<Int> = TODO()
  * Использовать функции стандартной библиотеки, напрямую и полностью решающие данную задачу
  * (например, n.toString(base) и подобные), запрещается.
  */
-fun convertToString(n: Int, base: Int): String = TODO()
+fun convertToString(n: Int, base: Int): String {
+    var n1 = n
+    val list = mutableListOf<Int>()
+    while (n1 > 0) {
+        list += n1 % base
+        n1 /= base
+    }
 
+
+return list.reversed().joinToString(separ)
+}
+
+fun main() = println(convertToString(250, 14))
 /**
  * Средняя (3 балла)
  *
