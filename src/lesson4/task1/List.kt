@@ -268,7 +268,6 @@ fun factorizeToString(n: Int): String {
 }
 
 
-
 /**
  * Средняя (3 балла) РЕШЕНО
  *
@@ -286,7 +285,6 @@ fun convert(n: Int, base: Int): List<Int> {
     }
     return list.reversed()
 }
-
 
 
 /**
@@ -307,12 +305,19 @@ fun convertToString(n: Int, base: Int): String {
         list += n1 % base
         n1 /= base
     }
-
-
-return list.reversed().joinToString(separ)
+    val list2: MutableList<Any> = list.toMutableList()
+    for (i in 0 until list.size) {
+        if (list[i] > 9) {
+            val element = ('a' - 10) + list[i]
+            list2.add(i, element)
+            list2.removeAt(i + 1)
+        }
+    }
+    return list2.reversed().joinToString(separator = "")
 }
 
 fun main() = println(convertToString(250, 14))
+
 /**
  * Средняя (3 балла)
  *
