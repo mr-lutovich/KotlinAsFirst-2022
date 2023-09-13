@@ -316,7 +316,6 @@ fun convertToString(n: Int, base: Int): String {
     return list2.reversed().joinToString(separator = "")
 }
 
-fun main() = println(convertToString(250, 14))
 
 /**
  * Средняя (3 балла)
@@ -325,7 +324,17 @@ fun main() = println(convertToString(250, 14))
  * из системы счисления с основанием base в десятичную.
  * Например: digits = (1, 3, 12), base = 14 -> 250
  */
-fun decimal(digits: List<Int>, base: Int): Int = TODO()
+fun decimal(digits: List<Int>, base: Int): Int {
+    var p = 0
+    var sqrB = 1
+    for (i in (digits.size - 1) downTo 0) {
+        p += digits[i] * sqrB
+        sqrB *= base
+
+    }
+    return p
+}
+
 
 /**
  * Сложная (4 балла)
@@ -339,7 +348,28 @@ fun decimal(digits: List<Int>, base: Int): Int = TODO()
  * Использовать функции стандартной библиотеки, напрямую и полностью решающие данную задачу
  * (например, str.toInt(base)), запрещается.
  */
-fun decimalFromString(str: String, base: Int): Int = TODO()
+fun decimalFromString(str: String, base: Int): Int {
+    val list = mutableListOf<Int>()
+    for (char in str) {
+        if (char.code in 48..57) {
+            val element = char - '0'
+            list.add(element)
+        } else {
+            val element2 = char - 'a' + 10
+            list.add(element2)
+        }
+    }
+    var p = 0
+    var sqrB = 1
+    for (i in (list.size - 1) downTo 0) {
+        p += list[i] * sqrB
+        sqrB *= base
+
+    }
+    return p
+}
+
+fun main() = println(decimalFromString("13c", 14))
 
 /**
  * Сложная (5 баллов)
