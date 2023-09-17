@@ -150,7 +150,6 @@ fun subtractOf(a: MutableMap<String, String>, b: Map<String, String>) {
     }
 }
 
-fun main() = subtractOf(mutableMapOf("a" to "z", "b" to "c"), mapOf("a" to "z"))
 
 /**
  * Простая (2 балла)
@@ -159,7 +158,8 @@ fun main() = subtractOf(mutableMapOf("a" to "z", "b" to "c"), mapOf("a" to "z"))
  * В выходном списке не должно быть повторяющихся элементов,
  * т. е. whoAreInBoth(listOf("Марат", "Семён, "Марат"), listOf("Марат", "Марат")) == listOf("Марат")
  */
-fun whoAreInBoth(a: List<String>, b: List<String>): List<String> = TODO()
+fun whoAreInBoth(a: List<String>, b: List<String>): List<String> = (a.toSet().intersect(b.toSet())).toList()
+fun main() = println(whoAreInBoth(listOf("Marat", "Mikhail"), listOf("Marat", "Kirill")))
 
 /**
  * Средняя (3 балла)
