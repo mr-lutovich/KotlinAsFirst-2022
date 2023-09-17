@@ -159,7 +159,7 @@ fun subtractOf(a: MutableMap<String, String>, b: Map<String, String>) {
  * т. е. whoAreInBoth(listOf("Марат", "Семён, "Марат"), listOf("Марат", "Марат")) == listOf("Марат")
  */
 fun whoAreInBoth(a: List<String>, b: List<String>): List<String> = (a.toSet().intersect(b.toSet())).toList()
-fun main() = println(whoAreInBoth(listOf("Marat", "Mikhail"), listOf("Marat", "Kirill")))
+
 
 /**
  * Средняя (3 балла)
@@ -178,7 +178,26 @@ fun main() = println(whoAreInBoth(listOf("Marat", "Mikhail"), listOf("Marat", "K
  *     mapOf("Emergency" to "911", "Police" to "02")
  *   ) -> mapOf("Emergency" to "112, 911", "Police" to "02")
  */
-fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Map<String, String> = TODO()
+fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): MutableMap<String, String> {
+    val list = mapA.toList() + mapB.toList()
+    val map = list.groupBy(
+        keySelector = { it.first },
+        valueTransform = { it.second }
+    )
+    val map2 = mutableMapOf<String, String>()
+    for ((key, value) in map) {
+        map2[key] = value.joinToString(separator = ",")
+    }
+
+    return map2
+}
+
+fun main() = println(
+    mergePhoneBooks(
+        mapOf("Emergency" to "112"),
+        mapOf("Emergency" to "911", "Police" to "02")
+    )
+)
 
 /**
  * Средняя (4 балла)
