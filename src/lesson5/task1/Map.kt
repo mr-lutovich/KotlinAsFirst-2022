@@ -104,7 +104,6 @@ fun buildGrades(grades: Map<String, Int>): Map<Int, List<String>> {
     )
 }
 
-fun main() = println(buildGrades(mapOf("Марат" to 3, "Семён" to 5, "Михаил" to 5)))
 
 /**
  * Простая (2 балла)
@@ -139,8 +138,19 @@ fun containsIn(a: Map<String, String>, b: Map<String, String>): Boolean {
  *     -> a changes to mutableMapOf() aka becomes empty
  */
 fun subtractOf(a: MutableMap<String, String>, b: Map<String, String>) {
-    TODO()
+
+    val pairToRemove = mutableMapOf<String, String>()
+    for ((key, value) in a) {
+        if (a[key] == b[key]) {
+            pairToRemove[key] = value
+        }
+    }
+    for ((key) in pairToRemove) {
+        a.remove(key)
+    }
 }
+
+fun main() = subtractOf(mutableMapOf("a" to "z", "b" to "c"), mapOf("a" to "z"))
 
 /**
  * Простая (2 балла)
