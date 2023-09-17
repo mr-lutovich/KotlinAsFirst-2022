@@ -186,7 +186,7 @@ fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Mutab
     )
     val map2 = mutableMapOf<String, String>()
     for ((key, value) in map) {
-        map2[key] = value.joinToString(separator = ",")
+        map2[key] = value.toSet().joinToString(separator = ", ")
     }
 
     return map2
@@ -195,7 +195,7 @@ fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Mutab
 fun main() = println(
     mergePhoneBooks(
         mapOf("Emergency" to "112"),
-        mapOf("Emergency" to "911", "Police" to "02")
+        mapOf("Emergency" to "112", "Police" to "02")
     )
 )
 
