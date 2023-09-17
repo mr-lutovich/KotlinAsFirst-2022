@@ -116,6 +116,12 @@ class Tests {
             buildGrades(mapOf("Марат" to 3, "Семён" to 3, "Михаил" to 3))
                 .mapValues { (_, v) -> v.sorted() }
         )
+
+        assertEquals(
+            mapOf(5 to listOf("Михаил", "Семён"), 3 to listOf("Марат")),
+            buildGrades(mapOf("Семён" to 5, "Марат" to 3, "Михаил" to 5))
+                .mapValues { (_, v) -> v.sorted() }
+        )
     }
 
     @Test
