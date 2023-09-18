@@ -216,10 +216,10 @@ fun averageStockPrice(stockPrices: List<Pair<String, Double>>): Map<String, Doub
     return result
 }
 
-fun main() = println(averageStockPrice(listOf("MSFT" to 100.0, "MSFT" to 200.0, "NFLX" to 40.0, "NFLX" to 50.0)))
 
 /**
- * Средняя (4 балла)
+ * Средняя (4 балла) РЕШЕНО
+ * Нужно будет переосмыслить реализацию
  *
  * Входными данными является ассоциативный массив
  * "название товара"-"пара (тип товара, цена товара)"
@@ -233,7 +233,30 @@ fun main() = println(averageStockPrice(listOf("MSFT" to 100.0, "MSFT" to 200.0, 
  *     "печенье"
  *   ) -> "Мария"
  */
-fun findCheapestStuff(stuff: Map<String, Pair<String, Double>>, kind: String): String = TODO()
+fun findCheapestStuff(stuff: Map<String, Pair<String, Double>>, kind: String): String? {
+
+    val list = mutableListOf<Double>()
+    var result = ""
+    for (entry in stuff) {
+        val value = entry.value
+        if (value.first == kind) list.add(value.second)
+    }
+    if (list.isEmpty()) return null
+    for ((key, value) in stuff) {
+        if (value.first == kind && value.second == list.min()) {
+            result = key
+        }
+
+    }
+    return result
+}
+
+fun main() = println(
+    findCheapestStuff(
+        mapOf("Мария" to ("печенье" to 20.0), "Орео" to ("печенье" to 100.0)),
+        "печенье"
+    )
+)
 
 /**
  * Средняя (3 балла)
