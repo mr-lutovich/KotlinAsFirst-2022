@@ -192,15 +192,9 @@ fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Mutab
     return map2
 }
 
-fun main() = println(
-    mergePhoneBooks(
-        mapOf("Emergency" to "112"),
-        mapOf("Emergency" to "112", "Police" to "02")
-    )
-)
 
 /**
- * Средняя (4 балла)
+ * Средняя (4 балла) РЕШЕНО
  *
  * Для заданного списка пар "акция"-"стоимость" вернуть ассоциативный массив,
  * содержащий для каждой акции ее усредненную стоимость.
@@ -209,7 +203,20 @@ fun main() = println(
  *   averageStockPrice(listOf("MSFT" to 100.0, "MSFT" to 200.0, "NFLX" to 40.0))
  *     -> mapOf("MSFT" to 150.0, "NFLX" to 40.0)
  */
-fun averageStockPrice(stockPrices: List<Pair<String, Double>>): Map<String, Double> = TODO()
+fun averageStockPrice(stockPrices: List<Pair<String, Double>>): Map<String, Double> {
+
+    val stockPricesMap = stockPrices.groupBy(
+        keySelector = { it.first },
+        valueTransform = { it.second }
+    )
+    val result = mutableMapOf<String, Double>()
+    for ((key, value) in stockPricesMap) {
+        result[key] = value.sum() / value.size
+    }
+    return result
+}
+
+fun main() = println(averageStockPrice(listOf("MSFT" to 100.0, "MSFT" to 200.0, "NFLX" to 40.0, "NFLX" to 50.0)))
 
 /**
  * Средняя (4 балла)
