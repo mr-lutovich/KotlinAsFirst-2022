@@ -252,7 +252,6 @@ fun findCheapestStuff(stuff: Map<String, Pair<String, Double>>, kind: String): S
 }
 
 
-
 /**
  * Средняя (3 балла) РЕШЕНО
  *
