@@ -251,15 +251,10 @@ fun findCheapestStuff(stuff: Map<String, Pair<String, Double>>, kind: String): S
     return result
 }
 
-fun main() = println(
-    findCheapestStuff(
-        mapOf("Мария" to ("печенье" to 20.0), "Орео" to ("печенье" to 100.0)),
-        "печенье"
-    )
-)
+
 
 /**
- * Средняя (3 балла)
+ * Средняя (3 балла) РЕШЕНО
  *
  * Для заданного набора символов определить, можно ли составить из него
  * указанное слово (регистр символов игнорируется)
@@ -267,7 +262,16 @@ fun main() = println(
  * Например:
  *   canBuildFrom(listOf('a', 'b', 'o'), "baobab") -> true
  */
-fun canBuildFrom(chars: List<Char>, word: String): Boolean = TODO()
+fun canBuildFrom(chars: List<Char>, word: String): Boolean {
+    val charsSet = chars.toSet()
+    val wordCharSet = mutableSetOf<Char>()
+    for (char in word) {
+        wordCharSet.add(char)
+    }
+    return charsSet == wordCharSet
+}
+
+fun main() = println(canBuildFrom(listOf('a', 'b', 'o'), "baobab"))
 
 /**
  * Средняя (4 балла)
