@@ -271,7 +271,6 @@ fun canBuildFrom(chars: List<Char>, word: String): Boolean {
 }
 
 
-
 /**
  * Средняя (4 балла) РЕШЕНО
  *
@@ -286,19 +285,18 @@ fun canBuildFrom(chars: List<Char>, word: String): Boolean {
  */
 fun extractRepeats(list: List<String>): Map<String, Int> {
 
-   val map = list.groupBy(
-        keySelector = {it},
-        valueTransform = {it.count()}
+    val map = list.groupBy(
+        keySelector = { it },
+        valueTransform = { it.count() }
     )
-val map2 = mutableMapOf<String, Int>()
+    val map2 = mutableMapOf<String, Int>()
 
-    for ((key, value ) in map) {
+    for ((key, value) in map) {
         map2[key] = value.sum()
     }
 
     return map2.toMap().filterValues { it > 1 }
 }
-
 
 
 /**
@@ -324,7 +322,9 @@ fun hasAnagrams(words: List<String>): Boolean {
     }
     return map.size != result.size
 }
+
 fun main() = println(hasAnagrams(listOf("поле", "полено")))
+
 /**
  * Сложная (5 баллов)
  *
