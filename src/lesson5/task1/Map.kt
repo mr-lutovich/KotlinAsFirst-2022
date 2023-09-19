@@ -299,7 +299,7 @@ val map2 = mutableMapOf<String, Int>()
     return map2.toMap().filterValues { it > 1 }
 }
 
-fun main() = println(extractRepeats(listOf("a", "b", "c")))
+
 
 /**
  * Средняя (3 балла)
@@ -313,8 +313,18 @@ fun main() = println(extractRepeats(listOf("a", "b", "c")))
  * Например:
  *   hasAnagrams(listOf("тор", "свет", "рот")) -> true
  */
-fun hasAnagrams(words: List<String>): Boolean = TODO()
-
+fun hasAnagrams(words: List<String>): Boolean {
+    val map = mutableMapOf<String, Set<String>>()
+    val result = mutableMapOf<Set<String>, String>()
+    for (word in words) {
+        map[word] = (word.split("")).toSet()
+    }
+    for ((key, value) in map) {
+        result[value] = key
+    }
+    return map.size != result.size
+}
+fun main() = println(hasAnagrams(listOf("поле", "полено")))
 /**
  * Сложная (5 баллов)
  *
