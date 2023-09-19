@@ -270,10 +270,10 @@ fun canBuildFrom(chars: List<Char>, word: String): Boolean {
     return charsSet == wordCharSet
 }
 
-fun main() = println(canBuildFrom(listOf('a', 'b', 'o'), "baobab"))
+
 
 /**
- * Средняя (4 балла)
+ * Средняя (4 балла) РЕШЕНО
  *
  * Найти в заданном списке повторяющиеся элементы и вернуть
  * ассоциативный массив с информацией о числе повторений
@@ -284,7 +284,22 @@ fun main() = println(canBuildFrom(listOf('a', 'b', 'o'), "baobab"))
  * Например:
  *   extractRepeats(listOf("a", "b", "a")) -> mapOf("a" to 2)
  */
-fun extractRepeats(list: List<String>): Map<String, Int> = TODO()
+fun extractRepeats(list: List<String>): Map<String, Int> {
+
+   val map = list.groupBy(
+        keySelector = {it},
+        valueTransform = {it.count()}
+    )
+val map2 = mutableMapOf<String, Int>()
+
+    for ((key, value ) in map) {
+        map2[key] = value.sum()
+    }
+
+    return map2.toMap().filterValues { it > 1 }
+}
+
+fun main() = println(extractRepeats(listOf("a", "b", "c")))
 
 /**
  * Средняя (3 балла)
